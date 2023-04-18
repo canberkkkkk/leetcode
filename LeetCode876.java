@@ -1,17 +1,12 @@
 public class LeetCode876 {
   public ListNode middleNode(ListNode head) {
-    ListNode node = head;
-    int size = 0;
+    ListNode slowNode = head, fastNode = head;
 
-    while (node != null) {
-      size++;
-      node = node.next;
+    while (fastNode != null && fastNode.next != null) {
+      slowNode = slowNode.next;
+      fastNode = fastNode.next.next;
     }
 
-    node = head;
-    for (int i = 0; i < size / 2; i++)
-      node = node.next;
-
-    return node;
+    return slowNode;
   }
 }
